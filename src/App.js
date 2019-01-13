@@ -85,6 +85,7 @@ class App extends Component {
   }
 
   onButtonSubmit = () => {
+    if (this.setState({ imageUrl: this.state.input }) != null &&  this.setState({ imageUrl: this.state.input }) !='') {
     this.setState({ imageUrl: this.state.input });
     //fetch('https://dry-coast-73945.herokuapp.com/imageurl', {
     fetch('https://morning-cove-53342.herokuapp.com/imageurl', {
@@ -112,7 +113,12 @@ class App extends Component {
         this.displayFaceBox(this.calculateFaceLocation(response))
       })
       .catch(err => console.log(err));
+    } else {
+      alert("Please enter a url");
+    }
   }
+
+
   onRouteChange = (route) => {
     if (route === 'signout') {
       this.setState(initialstate);
